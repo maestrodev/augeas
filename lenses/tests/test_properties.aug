@@ -20,13 +20,15 @@ long.description=this is a description that happens to span \
         spaces \  
 or not
 
+# comment break
+
 "
 (*
 overflow.description=\
   just wanted to indent it
 
-=empty_property
- =empty_property
+=empty_key
+ =empty_key
 
 cheeses
 
@@ -65,7 +67,14 @@ test lns get conf =
         { = "or not" }
     }
     {}
-
+    { "#comment" = "comment break" }
+    {}
+(*
+    { "overflow.description" = " < multi > "
+        { = "just wanted to indent it" }
+    }
+    {}
+*)
 test lns put conf after
     set "tomcat.port" "99";
     set "tomcat.application.host" "foo.network.com"
@@ -90,14 +99,16 @@ long.description=this is a description that happens to span \
         spaces \  
 or not
 
-tomcat.application.host=foo.network.com
-"
-(*
+# comment break
+
 overflow.description=\
   just wanted to indent it
 
-=empty_property
- =empty_property
+tomcat.application.host=foo.network.com
+"
+(*
+=empty_key
+ =empty_key
 
 cheeses
 
