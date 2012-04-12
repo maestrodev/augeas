@@ -5,6 +5,7 @@
    - doesn't support \ alone on a line
    - doesn't support ' ' as a separator
    - values are not unescaped
+   - multi-line properties are broken down by line, and can't be replaced with a single line
 
   See format info: http://docs.oracle.com/javase/6/docs/api/java/util/Properties.html#load(java.io.Reader)
 *)
