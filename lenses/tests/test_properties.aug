@@ -101,12 +101,12 @@ or not
 
 # comment break
 
-overflow.description=\
-  just wanted to indent it
-
 tomcat.application.host=foo.network.com
 "
 (*
+overflow.description=\
+  just wanted to indent it
+
 =empty_key
  =empty_key
 

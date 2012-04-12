@@ -8,16 +8,15 @@ module Properties =
   let empty            = Util.empty
   let eol              = Util.eol
   let sepch            = del /[ \t]*(=|:)/ "="
-  let value_to_eol     = store /([^ \t\n].*)?[^ \t\n\\]/
+  let value_to_eol     = store /([^ \t\n][^\n]*[^ \t\n\\]|[^ \t\n\\])/
+  let value_to_bs      = store /[^ \t\n][^\n]*[^\\]/
   let indent           = Util.indent
   let entry            = /[A-Za-z][A-Za-z0-9._]+/
-  let backslash        = del /[\\][ ]*/ "\\ "
+  let backslash        = del /[\\][ \t]*\n/ "\\\n"
   let hardeol          = del "\n" "\n"
 
-  (* store any line that begins with ' ' *)
   let multi_line_entry =
-    let line = /[^ \t\n][^\n]+/ in
-      [ indent . store line . backslash . hardeol ] + .
+      [ indent . value_to_bs . backslash ] + .
       [ indent . value_to_eol . eol ] . value " < multi > "
 
   (* define comments and properties*)
@@ -27,4 +26,4 @@ module Properties =
   let empty_property   = [ indent . key entry . sepch . eol ]
 
   (* setup our lens and filter*)
-  let lns              = ( property | empty | comment | empty_property  ) *
+  let lns              = ( empty | comment | property | empty_property  ) *
