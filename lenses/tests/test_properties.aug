@@ -22,11 +22,11 @@ or not
 
 # comment break
 
+short.break = a\
+ b
+
 "
 (*
-overflow.description=\
-  just wanted to indent it
-
 =empty_key
  =empty_key
 
@@ -39,6 +39,12 @@ multi  spaces
 escaped\:colon=value
 escaped\=equals=value
 escaped\ space=value
+*)
+
+(* Other tests that aren't supported yet
+overflow.description=\
+  just wanted to indent it
+
 *)
 
 let lns = Properties.lns
@@ -68,6 +74,11 @@ test lns get conf =
     }
     {}
     { "#comment" = "comment break" }
+    {}
+    { "short.break" = " < multi > "
+        { = "a" }
+        { = "b" }
+    }
     {}
 (*
     { "overflow.description" = " < multi > "
@@ -101,12 +112,12 @@ or not
 
 # comment break
 
+short.break = a\
+ b
+
 tomcat.application.host=foo.network.com
 "
 (*
-overflow.description=\
-  just wanted to indent it
-
 =empty_key
  =empty_key
 

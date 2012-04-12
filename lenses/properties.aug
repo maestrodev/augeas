@@ -1,5 +1,10 @@
 (* Augeas module for editing Java properties files
  Author: Craig Dunn <craig@craigdunn.org>
+
+  Limitations:
+   - doesn't support \ alone on a line
+
+  See format info: http://docs.oracle.com/javase/6/docs/api/java/util/Properties.html#load(java.io.Reader)
 *)
 
 
@@ -9,7 +14,7 @@ module Properties =
   let eol              = Util.eol
   let sepch            = del /[ \t]*(=|:)/ "="
   let value_to_eol     = store /([^ \t\n][^\n]*[^ \t\n\\]|[^ \t\n\\])/
-  let value_to_bs      = store /[^ \t\n][^\n]*[^\\]/
+  let value_to_bs      = store /([^ \t\n][^\n]*[^\\]|[^ \t\n\\])/
   let indent           = Util.indent
   let entry            = /[A-Za-z][A-Za-z0-9._]+/
   let backslash        = del /[\\][ \t]*\n/ "\\\n"
