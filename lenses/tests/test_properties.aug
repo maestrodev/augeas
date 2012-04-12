@@ -8,7 +8,34 @@ tomcat.application.name=testapp
     tomcat.application.description=my test application
 property.with_underscore=works
 empty.property=
+empty.property.withtrailingspaces=   
 "
+(*
+! more comments
+
+long.description=this is a description that happens to span \
+	more than one line with a combination of tabs and \
+        spaces \  
+or not
+
+overflow.description=\
+  just wanted to indent it
+
+=empty_property
+key: value
+key2:value2
+key3 :value3
+
+cheeses
+
+spaces only
+multi  spaces
+  indented spaces
+
+escaped\:colon=value
+escaped\=equals=value
+escaped\ space=value
+*)
 
 let lns = Properties.lns
 
@@ -22,6 +49,7 @@ test lns get conf =
     { "tomcat.application.description" = "my test application" }
     { "property.with_underscore" = "works" }
     { "empty.property" }
+    { "empty.property.withtrailingspaces" }
 
 test lns put conf after
     set "tomcat.port" "99";
@@ -35,5 +63,32 @@ tomcat.application.name=testapp
     tomcat.application.description=my test application
 property.with_underscore=works
 empty.property=
+empty.property.withtrailingspaces=   
 tomcat.application.host=foo.network.com
 "
+(*
+! more comments
+
+long.description=this is a description that happens to span \
+	more than one line with a combination of tabs and \
+        spaces \  
+or not
+
+overflow.description=\
+  just wanted to indent it
+
+=empty_property
+key: value
+key2:value2
+key3 :value3
+
+cheeses
+
+spaces only
+multi  spaces
+  indented spaces
+
+escaped\:colon=value
+escaped\=equals=value
+escaped\ space=value
+*)
