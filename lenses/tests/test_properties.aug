@@ -25,11 +25,11 @@ or not
 short.break = a\
  b
 
-"
-(*
 =empty_key
  =empty_key
 
+"
+(*
 cheeses
 
 spaces only
@@ -80,6 +80,9 @@ test lns get conf =
         { = "b" }
     }
     {}
+    { = "empty_key" }
+    { = "empty_key" }
+    {}
 (*
     { "overflow.description" = " < multi > "
         { = "just wanted to indent it" }
@@ -115,12 +118,12 @@ or not
 short.break = a\
  b
 
-tomcat.application.host=foo.network.com
-"
-(*
 =empty_key
  =empty_key
 
+tomcat.application.host=foo.network.com
+"
+(*
 cheeses
 
 spaces only
