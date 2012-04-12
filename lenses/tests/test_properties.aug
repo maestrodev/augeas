@@ -13,6 +13,7 @@ empty.property.withtrailingspaces=
 key: value
 key2:value2
 key3 :value3
+key4:=value4
 "
 (*
 
@@ -25,6 +26,7 @@ overflow.description=\
   just wanted to indent it
 
 =empty_property
+ =empty_property
 
 cheeses
 
@@ -54,6 +56,7 @@ test lns get conf =
     { "key" = "value" }
     { "key2" = "value2" }
     { "key3" = "value3" }
+    { "key4" = "=value4" }
 
 test lns put conf after
     set "tomcat.port" "99";
@@ -72,6 +75,7 @@ empty.property.withtrailingspaces=
 key: value
 key2:value2
 key3 :value3
+key4:=value4
 tomcat.application.host=foo.network.com
 "
 (*
@@ -85,6 +89,7 @@ overflow.description=\
   just wanted to indent it
 
 =empty_property
+ =empty_property
 
 cheeses
 
