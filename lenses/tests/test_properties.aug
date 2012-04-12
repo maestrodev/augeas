@@ -32,10 +32,6 @@ short.break = a\
 (*
 cheeses
 
-spaces only
-multi  spaces
-  indented spaces
-
 escaped\:colon=value
 escaped\=equals=value
 escaped\ space=value
@@ -44,6 +40,10 @@ escaped\ space=value
 (* Other tests that aren't supported yet
 overflow.description=\
   just wanted to indent it
+
+spaces only
+multi  spaces
+  indented spaces
 
 *)
 
@@ -83,12 +83,6 @@ test lns get conf =
     { = "empty_key" }
     { = "empty_key" }
     {}
-(*
-    { "overflow.description" = " < multi > "
-        { = "just wanted to indent it" }
-    }
-    {}
-*)
 test lns put conf after
     set "tomcat.port" "99";
     set "tomcat.application.host" "foo.network.com"
@@ -125,10 +119,6 @@ tomcat.application.host=foo.network.com
 "
 (*
 cheeses
-
-spaces only
-multi  spaces
-  indented spaces
 
 escaped\:colon=value
 escaped\=equals=value
