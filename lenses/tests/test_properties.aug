@@ -10,6 +10,9 @@ property.with_underscore=works
 empty.property=
 empty.property.withtrailingspaces=   
 ! more comments
+key: value
+key2:value2
+key3 :value3
 "
 (*
 
@@ -22,9 +25,6 @@ overflow.description=\
   just wanted to indent it
 
 =empty_property
-key: value
-key2:value2
-key3 :value3
 
 cheeses
 
@@ -51,6 +51,9 @@ test lns get conf =
     { "empty.property" }
     { "empty.property.withtrailingspaces" }
     { "!comment" = "more comments" }
+    { "key" = "value" }
+    { "key2" = "value2" }
+    { "key3" = "value3" }
 
 test lns put conf after
     set "tomcat.port" "99";
@@ -66,6 +69,9 @@ property.with_underscore=works
 empty.property=
 empty.property.withtrailingspaces=   
 ! more comments
+key: value
+key2:value2
+key3 :value3
 tomcat.application.host=foo.network.com
 "
 (*
@@ -79,9 +85,6 @@ overflow.description=\
   just wanted to indent it
 
 =empty_property
-key: value
-key2:value2
-key3 :value3
 
 cheeses
 

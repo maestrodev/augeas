@@ -3,7 +3,6 @@
 
  FIXME: Doesn't cover everything that's legal in Java properties yet
         - multiline
-        - key:value syntax
 *)
 
 
@@ -11,7 +10,7 @@ module Properties =
   (* Define some basic primitives *)
   let empty        = Util.empty
   let eol          = Util.eol
-  let sepch        = del /[ \t]*=/ "="
+  let sepch        = del /[ \t]*(=|:)/ "="
   let value_to_eol = /[^ \t\n](.*[^ \t\n])?/
   let indent       = Util.indent
   let entry        = /[A-Za-z][A-Za-z0-9._]+/
