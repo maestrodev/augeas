@@ -30,12 +30,9 @@ short.break = a\
 
 cheeses
 
-"
-(*
 escaped\:colon=value
 escaped\=equals=value
-escaped\ space=value
-*)
+"
 
 (* Other tests that aren't supported yet
 overflow.description=\
@@ -45,6 +42,7 @@ spaces only
 multi  spaces
   indented spaces
 
+escaped\ space=value
 *)
 
 let lns = Properties.lns
@@ -85,6 +83,8 @@ test lns get conf =
     {}
     { "cheeses" }
     {}
+    { "escaped\:colon" = "value" }
+    { "escaped\=equals" = "value" }
 test lns put conf after
     set "tomcat.port" "99";
     set "tomcat.application.host" "foo.network.com"
@@ -119,10 +119,7 @@ short.break = a\
 
 cheeses
 
-tomcat.application.host=foo.network.com
-"
-(*
 escaped\:colon=value
 escaped\=equals=value
-escaped\ space=value
-*)
+tomcat.application.host=foo.network.com
+"

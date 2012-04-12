@@ -4,6 +4,7 @@
   Limitations:
    - doesn't support \ alone on a line
    - doesn't support ' ' as a separator
+   - values are not unescaped
 
   See format info: http://docs.oracle.com/javase/6/docs/api/java/util/Properties.html#load(java.io.Reader)
 *)
@@ -20,7 +21,7 @@ module Properties =
   let value_to_bs      = store /([^ \t\n][^\n]*[^\\]|[^ \t\n\\])/
   let indent           = Util.indent
   let backslash        = del /[\\][ \t]*\n/ "\\\n"
-  let entry            = /[^ \t\n:=\/!#]+/
+  let entry            = /([^ \t\n:=\/!#]|[\\]:|[\\]=)+/
 
   let multi_line_entry =
       [ indent . value_to_bs . backslash ] + .
