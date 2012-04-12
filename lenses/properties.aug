@@ -13,7 +13,9 @@ module Properties =
   (* Define some basic primitives *)
   let empty            = Util.empty
   let eol              = Util.eol
+  let hard_eol         = del "\n" "\n"
   let sepch            = del /[ \t]*(=|:)/ "="
+  let sepch_opt        = del /[ \t]*(=|:)?[ \t]*/ "="
   let value_to_eol     = store /([^ \t\n][^\n]*[^ \t\n\\]|[^ \t\n\\])/
   let value_to_bs      = store /([^ \t\n][^\n]*[^\\]|[^ \t\n\\])/
   let indent           = Util.indent
@@ -28,7 +30,7 @@ module Properties =
   let bang_comment     = [ label "!comment" . del /[ \t]*![ \t]*/ "! " . store /([^ \t\n].*[^ \t\n]|[^ \t\n])/ . eol ]
   let comment          = ( Util.comment | bang_comment )
   let property         = [ indent . key entry . sepch . ( multi_line_entry | indent . value_to_eol . eol ) ]
-  let empty_property   = [ indent . key entry . sepch . eol ]
+  let empty_property   = [ indent . key entry . sepch_opt . hard_eol ]
   let empty_key        = [ sepch . ( multi_line_entry | indent . value_to_eol . eol ) ]
 
   (* setup our lens and filter*)

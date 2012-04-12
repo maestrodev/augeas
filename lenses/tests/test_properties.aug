@@ -28,10 +28,10 @@ short.break = a\
 =empty_key
  =empty_key
 
-"
-(*
 cheeses
 
+"
+(*
 escaped\:colon=value
 escaped\=equals=value
 escaped\ space=value
@@ -83,6 +83,8 @@ test lns get conf =
     { = "empty_key" }
     { = "empty_key" }
     {}
+    { "cheeses" }
+    {}
 test lns put conf after
     set "tomcat.port" "99";
     set "tomcat.application.host" "foo.network.com"
@@ -115,11 +117,11 @@ short.break = a\
 =empty_key
  =empty_key
 
+cheeses
+
 tomcat.application.host=foo.network.com
 "
 (*
-cheeses
-
 escaped\:colon=value
 escaped\=equals=value
 escaped\ space=value
