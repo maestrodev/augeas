@@ -14,14 +14,14 @@ key: value
 key2:value2
 key3 :value3
 key4:=value4
-"
-(*
 
 long.description=this is a description that happens to span \
 	more than one line with a combination of tabs and \
         spaces \  
 or not
 
+"
+(*
 overflow.description=\
   just wanted to indent it
 
@@ -57,6 +57,14 @@ test lns get conf =
     { "key2" = "value2" }
     { "key3" = "value3" }
     { "key4" = "=value4" }
+    {}
+    { "long.description" = " < multi > "
+        { = "this is a description that happens to span " }
+        { = "more than one line with a combination of tabs and " }
+        { = "spaces " }
+        { = "or not" }
+    }
+    {}
 
 test lns put conf after
     set "tomcat.port" "99";
@@ -76,15 +84,15 @@ key: value
 key2:value2
 key3 :value3
 key4:=value4
-tomcat.application.host=foo.network.com
-"
-(*
 
 long.description=this is a description that happens to span \
 	more than one line with a combination of tabs and \
         spaces \  
 or not
 
+tomcat.application.host=foo.network.com
+"
+(*
 overflow.description=\
   just wanted to indent it
 
