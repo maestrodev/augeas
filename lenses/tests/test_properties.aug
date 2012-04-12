@@ -9,9 +9,9 @@ tomcat.application.name=testapp
 property.with_underscore=works
 empty.property=
 empty.property.withtrailingspaces=   
+! more comments
 "
 (*
-! more comments
 
 long.description=this is a description that happens to span \
 	more than one line with a combination of tabs and \
@@ -50,6 +50,7 @@ test lns get conf =
     { "property.with_underscore" = "works" }
     { "empty.property" }
     { "empty.property.withtrailingspaces" }
+    { "!comment" = "more comments" }
 
 test lns put conf after
     set "tomcat.port" "99";
@@ -64,10 +65,10 @@ tomcat.application.name=testapp
 property.with_underscore=works
 empty.property=
 empty.property.withtrailingspaces=   
+! more comments
 tomcat.application.host=foo.network.com
 "
 (*
-! more comments
 
 long.description=this is a description that happens to span \
 	more than one line with a combination of tabs and \

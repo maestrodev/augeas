@@ -3,7 +3,6 @@
 
  FIXME: Doesn't cover everything that's legal in Java properties yet
         - multiline
-        - "!" comments
         - key:value syntax
 *)
 
@@ -18,8 +17,9 @@ module Properties =
   let entry        = /[A-Za-z][A-Za-z0-9._]+/
 
   (* define comments and properties*)
-  let comment     = Util.comment
-  let property    = [ indent . key entry . sepch . (indent . store value_to_eol)? . eol ]
+  let bang_comment = [ label "!comment" . del /[ \t]*![ \t]*/ "! " . store /([^ \t\n].*[^ \t\n]|[^ \t\n])/ . eol ]
+  let comment      = ( Util.comment | bang_comment )
+  let property     = [ indent . key entry . sepch . (indent . store value_to_eol)? . eol ]
 
   (* setup our lens and filter*)
-  let lns         = ( property | empty | comment  ) *
+  let lns          = ( property | empty | comment  ) *
